@@ -11,7 +11,16 @@
       </v-col>
     </v-row>
 
-    <v-row> </v-row>
+    <v-row>
+      <v-text-field
+        density="compact"
+        variant="solo"
+        label="Pergunte para o beebot"
+        append-inner-icon="mdi-microphone"
+        single-line
+        hide-details
+      ></v-text-field>
+    </v-row>
   </v-container>
 </template>
 

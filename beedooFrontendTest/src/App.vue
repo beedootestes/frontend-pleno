@@ -5,21 +5,17 @@ import CustomFooter from './components/CustomFooter.vue'
 </script>
 
 <template>
-  <header class="header">
+  <header style="background-color: red; width: auto">
     <CustomHeader />
   </header>
 
-  <RouterView />
+  <body>
+    <RouterView />
+  </body>
 
   <footer>
     <CustomFooter />
   </footer>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-  background-color: red;
-}
-</style>
+<style scoped></style>
