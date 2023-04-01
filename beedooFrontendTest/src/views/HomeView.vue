@@ -1,5 +1,11 @@
+<template>
+  <div class="bg">ok</div>
+</template>
+
 <script setup></script>
 
-<template>
-  <h1>FUNCIONANDO</h1>
-</template>
+<style scoped>
+header {
+  background-color: green;
+}
+</style>
