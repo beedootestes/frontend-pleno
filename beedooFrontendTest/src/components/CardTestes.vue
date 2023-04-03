@@ -7,7 +7,7 @@
       <v-col cols="3">
         <div class="d-flex justify-end align-self-start">
           <v-btn
-            @click="$router.push('testes')"
+            @click="$router.push({ name: 'testes', params: { id: itemId } })"
             class="ma-2"
             size="large"
             variant="text"
@@ -23,7 +23,8 @@
 import { defineProps } from 'vue'
 
 defineProps({
-  title: String
+  title: String,
+  itemId: Number
 })
 </script>
 <style scoped></style>
