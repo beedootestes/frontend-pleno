@@ -26,6 +26,6 @@ const newArrayOfQuestionsAndAnswers = newArrayOfQuestions.map((pergunta) => {
   return { pergunta, respostas }
 })
 
-console.log('noov array de perguntas e respostas => ', newArrayOfQuestionsAndAnswers)
+// console.log('noov array de perguntas e respostas => ', newArrayOfQuestionsAndAnswers)
 </script>
 <style scoped></style>
