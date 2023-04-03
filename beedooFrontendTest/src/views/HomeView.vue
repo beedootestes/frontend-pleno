@@ -1,8 +1,14 @@
 <template>
-  <div class="bg">ok</div>
+  <v-list lines="one">
+    <v-list-item v-for="item in testesData" :key="item.id" :title="item.title"></v-list-item>
+  </v-list>
 </template>
 
-<script setup></script>
+<script setup>
+import testes from '../data/testes.json'
+
+const testesData = testes
+</script>
 
 <style scoped>
 header {
