@@ -1,5 +1,5 @@
 <template>
-  <v-card class="ml-4 mr-4 mt-1">
+  <v-card class="ml-4 mr-4 mt-1 elevation-5">
     <v-row>
       <v-col class="mt-2">
         <v-text class="ml-4 text-subtitle-2 font-weight-bold">{{ title }}</v-text>
