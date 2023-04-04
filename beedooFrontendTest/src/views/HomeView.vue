@@ -1,5 +1,5 @@
 <template>
-  <v-list v-for="item in testesData" :key="item.id" :title="item.title" lines="one">
+  <v-list class="bg" v-for="item in testesData" :key="item.id" :title="item.title" lines="one">
     <CardTestes :title="item.title" :itemId="item.id" />
   </v-list>
 </template>
@@ -12,7 +12,9 @@ const testesData = testes
 </script>
 
 <style scoped>
-header {
-  background-color: green;
+.bg {
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
 }
 </style>

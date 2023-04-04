@@ -5,11 +5,11 @@ import CustomFooter from './components/CustomFooter.vue'
 </script>
 
 <template>
-  <header style="background-color: red; width: auto">
+  <header style="background-color: white">
     <CustomHeader />
   </header>
 
-  <body>
+  <body style="background-color: white">
     <RouterView />
   </body>
 
