@@ -1,0 +1,18 @@
+.quiz{
+    @apply text-white border p-7 w-full max-w-md items-center justify-center flex flex-col rounded shadow-sm;
+
+    &_title{
+        @apply text-3xl font-bold;
+    }
+
+    &_total{
+        @apply py-3 text-lg;
+    }
+
+    &_button{
+        @apply py-5;
+        .btn{
+            @apply bg-blue-500 px-5 py-2 text-lg font-semibold rounded;
+        }
+    }
+}

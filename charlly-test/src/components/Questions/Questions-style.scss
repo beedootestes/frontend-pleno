@@ -1,0 +1,47 @@
+.questions{
+  &_title{
+    @apply text-white font-bold text-lg lg:text-4xl py-10 text-center;
+  }
+
+  &_content{
+    @apply w-[900px] h-full bg-slate-800 text-white flex-none shadow-lg rounded-lg p-10 ;
+
+    &_beet{
+      @apply text-right text-sm font-medium text-slate-300 mb-6;
+      span{
+        @apply text-gray-500 text-lg font-semibold;
+      }
+    }
+
+    &_money{
+      @apply text-2xl font-semibold py-3;
+
+      span{
+        @apply text-gray-500 text-lg;
+      }
+    }
+
+    &_input{
+      @apply space-y-3 pt-4;
+
+      .response{
+        @apply p-3 bg-slate-900 rounded;
+      }
+    }
+    .label{
+      @apply flex items-center space-x-2 cursor-pointer;
+    }
+
+    .btn{
+      @apply px-5 py-3 mt-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-600;
+    }
+
+      .valid{
+        @apply text-red-500 text-sm mt-2;
+      }
+
+    &_text{
+      @apply text-lg font-normal cursor-pointer;
+    }
+  }
+}
