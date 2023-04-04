@@ -3,7 +3,10 @@
     <v-list-item-group>
       <v-list-item v-for="(item, index) in newArrayOfQuestionsAndAnswers" :key="index">
         <v-list-item-content>
-          <v-list-item-title>{{ item.pergunta.text }}</v-list-item-title>
+          <v-list-item-title>
+            <v-icon>mdi-help-circle</v-icon>
+            {{ item.pergunta.text }}
+          </v-list-item-title>
           <v-list-item-subtitle
             v-for="(resposta, respostaIndex) in item.respostas"
             :key="respostaIndex"

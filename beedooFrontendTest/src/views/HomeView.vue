@@ -13,7 +13,6 @@ const testesData = testes
 
 <style scoped>
 .bg {
-  /* background-color: green; */
   display: flex;
   flex-direction: column;
 }
