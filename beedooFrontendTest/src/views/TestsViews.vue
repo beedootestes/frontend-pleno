@@ -31,5 +31,11 @@ const newArrayOfQuestionsAndAnswers = newArrayOfQuestions.map((pergunta) => {
   const respostas = respostasData.filter((resposta) => resposta.question_id === pergunta.id)
   return { pergunta, respostas }
 })
+
+newArrayOfQuestionsAndAnswers.forEach((item) => {
+  item.respostas.forEach((resposta) => {
+    resposta.selecionada = false
+  })
+})
 </script>
 <style scoped></style>
