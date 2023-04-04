@@ -1,6 +1,6 @@
 <template>
   <v-list v-for="item in testesData" :key="item.id" :title="item.title" lines="one">
-    <CardTestes :title="item.title" />
+    <CardTestes :title="item.title" :itemId="item.id" />
   </v-list>
 </template>
 

@@ -7,7 +7,7 @@
       <v-col cols="3">
         <div class="d-flex justify-end align-self-start">
           <v-btn
-            @click="$router.push('testes')"
+            @click="goToQuestionPage()"
             class="ma-2"
             size="large"
             variant="text"
@@ -19,9 +19,24 @@
     </v-row>
   </v-card>
 </template>
+
 <script setup>
-defineProps({
-  title: String
+import { useitemId } from '../stores/ItemIdStore.js'
+import { useRouter } from 'vue-router'
+
+const store = useitemId()
+const router = useRouter()
+
+function goToQuestionPage() {
+  router.push('testes')
+
+  store.setItemId(props.itemId)
+}
+
+const props = defineProps({
+  title: String,
+  itemId: Number
 })
 </script>
+
 <style scoped></style>

@@ -18,14 +18,15 @@
 <script setup>
 import perguntasData from '../data/perguntas.json'
 import respostasData from '../data/respostas.json'
+import { useitemId } from '../stores/ItemIdStore.js'
 
-const newArrayOfQuestions = perguntasData.filter((element) => element.parent_id === 54789)
+const store = useitemId()
+
+const newArrayOfQuestions = perguntasData.filter((element) => element.parent_id === store.itemId)
 
 const newArrayOfQuestionsAndAnswers = newArrayOfQuestions.map((pergunta) => {
   const respostas = respostasData.filter((resposta) => resposta.question_id === pergunta.id)
   return { pergunta, respostas }
 })
-
-// console.log('noov array de perguntas e respostas => ', newArrayOfQuestionsAndAnswers)
 </script>
 <style scoped></style>
