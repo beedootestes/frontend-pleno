@@ -1,6 +1,6 @@
 <template>
   <v-layout class="overflow-visible" style="height: 56px">
-    <v-bottom-navigation v-model="value" color="teal" grow>
+    <v-bottom-navigation v-model="value" color="primary" grow>
       <v-btn>
         <v-icon>mdi-rss</v-icon>
         Feed
@@ -24,6 +24,8 @@
   </v-layout>
 </template>
 
-<script setup></script>
+<script setup>
+const value = 2
+</script>
 
 <style scoped></style>
