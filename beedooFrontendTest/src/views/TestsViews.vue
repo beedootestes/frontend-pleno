@@ -12,9 +12,9 @@
             :key="respostaIndex"
             class="margin"
           >
-            <div class="border">
-              {{ resposta.text }}
-            </div>
+            <v-radio-group>
+              <v-radio :label="resposta.text"></v-radio>
+            </v-radio-group>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
