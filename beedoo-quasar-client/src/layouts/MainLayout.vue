@@ -16,17 +16,12 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+// import QHeader from '../components/QHeader.vue'
 
 export default defineComponent({
   name: 'MainLayout',
-
   components: {
-
+    // QHeader
   },
-
-  setup () {
-    return {
-    }
-  }
 })
 </script>
