@@ -10,8 +10,11 @@
           <v-list-item-subtitle
             v-for="(resposta, respostaIndex) in item.respostas"
             :key="respostaIndex"
+            class="margin"
           >
-            {{ resposta.text }}
+            <div class="border">
+              {{ resposta.text }}
+            </div>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -38,4 +41,13 @@ newArrayOfQuestionsAndAnswers.forEach((item) => {
   })
 })
 </script>
-<style scoped></style>
+<style scoped>
+.border {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px;
+}
+.margin {
+  margin: 20px;
+}
+</style>
