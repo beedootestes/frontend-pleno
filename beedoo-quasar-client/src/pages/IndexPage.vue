@@ -26,12 +26,13 @@
     <!-- <pre>{{ respostas }}</pre> -->
 
     <div class="q-pa-md">
-      <q-table title="Testes" :rows="testeRows" :columns="testeColumns" row-key="id" />
+      <q-table title="Testes" :grid="$q.screen.lt.sm" :rows="testeRows" :columns="testeColumns" row-key="id" />
     </div>
   </q-page>
 </template>
 
 <script>
+import { computed } from 'vue'
 import testes from '../data/testes.json'
 import perguntas from '../data/perguntas.json'
 import respostas from '../data/respostas.json'
@@ -44,7 +45,7 @@ export default {
         required: true,
         label: 'Id',
         align: 'left',
-        field: testes.id,
+        field: row => row.id,
         format: val => `${val}`,
         sortable: true
       },
@@ -52,7 +53,7 @@ export default {
         name: 'title',
         required: true,
         label: 'Title',
-        align: 'center',
+        align: 'left',
         field: row => row.title,
         format: val => `${val}`,
 
@@ -88,13 +89,8 @@ export default {
 
         sortable: true
       }];
-    const testeRows = [{
-      id: testes.id,
-      title: testes.title,
-      articles: testes.articles,
-      posts: testes.posts,
-      beetcoins: testes.beetcoins
-    }]
+
+    const testeRows = computed(() => testes);
 
     return {
       testes,
