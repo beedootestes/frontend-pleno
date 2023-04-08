@@ -30,10 +30,6 @@ import RespostaTable from 'src/components/RespostaTable.vue';
 // import QList from 'src/components/QList.vue';
 
 export default {
-  setup () {
-
-    return {};
-  },
   components: {
     TesteTable,
     PerguntaTable,
