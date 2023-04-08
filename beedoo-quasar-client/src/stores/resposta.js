@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import respostasData from '../assets/data/respostas.json'
 
 export const respostaStore = defineStore({
-  id: 'resposta',
+  id: 'respostas',
   state: () => ({
     data: [],
     loading: false,
@@ -11,10 +11,9 @@ export const respostaStore = defineStore({
     getData: state => state.data
   },
   actions: {
-    async loadData () {
+    loadData () {
       try {
         this.loading = true
-        await new Promise(resolve => setTimeout(resolve, 1000));
         this.data = respostasData;
       } catch (error) {
         console.log(`Error fetching testes: ${{ error }}`)

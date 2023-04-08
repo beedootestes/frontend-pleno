@@ -1,23 +1,24 @@
 <template>
-    <q-list v-if="store.$state.data.length" bordered separator>
-        <q-item v-for="teste in store.$state.data" :key="teste.id" clickable v-ripple>
-            <q-item-section>{{ teste.title }}</q-item-section>
+    <!-- <div v-if="loading">Carregando...</div> -->
+    <q-list bordered separator>
+        <q-item v-for="item in store.getData" :key="item.id" clickable v-ripple>
+            <q-item-section>{{ item.title }}</q-item-section>
         </q-item>
     </q-list>
 </template>
 
 <script>
-import { useTestesStore } from '../stores/teste';
+import { testeStore } from 'src/stores/teste.js'
 import { onMounted } from 'vue';
 
 export default ({
     setup () {
-        const store = useTestesStore();
+        const store = testeStore();
 
         onMounted(async () => await store.loadData())
-        console.log(store);
+
         return {
-            store
+            store,
         }
 
     }
