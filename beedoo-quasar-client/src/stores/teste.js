@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import testesData from '../assets/data/testes.json'
+import localData from '../assets/data/testes.json'
 
 export const testeStore = defineStore({
   id: 'teste',
@@ -15,11 +15,11 @@ export const testeStore = defineStore({
       try {
         this.loading = true
         await new Promise(resolve => setTimeout(resolve, 1000));
-        this.data = testesData;
+        this.data = localData;
+        console.log(localData);
+        this.loading = false
       } catch (error) {
         console.log(`Error fetching testes: ${{ error }}`)
-      } finally {
-        this.loading = false
       }
     }
   }
