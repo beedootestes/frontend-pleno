@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testa se o componente Header é uma instância do Vue > renderiza corretamente 1`] = `
+"<v-container data-v-8942cb99=\\"\\">
+  <v-card data-v-8942cb99=\\"\\" class=\\"d-flex flex-column card elevation-5 grey-lighten-3\\">
+    <v-row data-v-8942cb99=\\"\\">
+      <v-col data-v-8942cb99=\\"\\" class=\\"ma-2\\">
+        <v-img data-v-8942cb99=\\"\\" src=\\"../../public/logo-beedoo.png\\" alt=\\"logo-beedoo\\" width=\\"200\\" height=\\"50\\"></v-img>
+      </v-col>
+      <v-col data-v-8942cb99=\\"\\" class=\\"d-flex flex-row-reverse\\">
+        <v-btn data-v-8942cb99=\\"\\" class=\\"ma-2\\" color=\\"grey-lighten-2\\" icon=\\"mdi-account-circle\\"></v-btn>
+        <v-btn data-v-8942cb99=\\"\\" class=\\"ma-2\\" color=\\"grey-lighten-2\\" icon=\\"mdi-cart\\"></v-btn>
+      </v-col>
+    </v-row>
+    <v-row data-v-8942cb99=\\"\\" class=\\"ml-2 mr-2 mb-5\\">
+      <v-text-field data-v-8942cb99=\\"\\" density=\\"compact\\" variant=\\"solo\\" label=\\"Pergunte para o beebot\\" append-inner-icon=\\"mdi-microphone\\" single-line=\\"\\" hide-details=\\"\\"></v-text-field>
+    </v-row>
+  </v-card>
+</v-container>"
+`;

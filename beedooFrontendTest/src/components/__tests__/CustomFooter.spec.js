@@ -10,8 +10,8 @@ describe('CustomFooter.vue', () => {
 })
 
 describe('Testa se o componente Footer é uma instância do Vue', () => {
-  it('é uma instância do Vue', () => {
+  it('é uma instancia vue', () => {
     const wrapper = mount(Footer)
-    expect(wrapper.isVueInstance()).toBe(true)
+    expect(wrapper.vm).toBeTruthy()
   })
 })
