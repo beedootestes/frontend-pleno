@@ -41,6 +41,7 @@ newArrayOfQuestionsAndAnswers.forEach((item) => {
   })
 })
 </script>
+
 <style scoped>
 .border {
   border: 2px solid black;

@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CustomFooter.vue > Snapshot do arquivo CustomFooter 1`] = `
+"<v-layout class=\\"overflow-visible\\" style=\\"height: 56px;\\">
+  <v-bottom-navigation color=\\"primary\\" grow=\\"\\">
+    <v-btn>
+      <v-icon>mdi-rss</v-icon> Feed
+    </v-btn>
+    <v-btn>
+      <v-icon>mdi-lightbulb-on-outline</v-icon> Wiki
+    </v-btn>
+    <v-btn>
+      <v-icon>mdi-flash-outline</v-icon> Teste Relâmpago
+    </v-btn>
+    <v-btn>
+      <v-icon>mdi-checkbox-marked-outline</v-icon> Cursos
+    </v-btn>
+  </v-bottom-navigation>
+</v-layout>"
+`;
