@@ -11,5 +11,7 @@
     "javascriptreact",
     "typescript",
     "vue"
-  ]
+  ],
+  "cSpell.diagnosticLevel": "Hint",
+
 }

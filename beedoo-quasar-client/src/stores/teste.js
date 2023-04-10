@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import testeData from '../assets/data/testes.json'
 
 export const testeStore = defineStore({
-  id: 'testes',
+  id: 'teste',
   state: () => ({
     data: [],
     loading: false,
