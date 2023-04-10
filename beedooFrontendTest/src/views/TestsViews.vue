@@ -12,12 +12,15 @@
             :key="respostaIndex"
             class="margin"
           >
-            <v-radio-group>
+            <v-radio-group v-model="resposta.seleciona">
               <v-radio :label="resposta.text"></v-radio>
             </v-radio-group>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+      <div class="text-center mt-5">
+        <v-btn color="primary" @click="verificarRespostas()">Verificar Respostas</v-btn>
+      </div>
     </v-list-item-group>
   </v-list>
 </template>
@@ -40,6 +43,20 @@ newArrayOfQuestionsAndAnswers.forEach((item) => {
     resposta.selecionada = false
   })
 })
+
+function verificarRespostas() {
+  let acertos = 0
+  newArrayOfQuestionsAndAnswers.forEach((pergunta) => {
+    pergunta.respostas.forEach((resposta) => {
+      if (resposta.selecionada && resposta.is_correct) {
+        acertos++
+      }
+    })
+  })
+
+  const total = newArrayOfQuestionsAndAnswers.length
+  alert(`Você acertou ${acertos} de ${total} questões!`)
+}
 </script>
 
 <style scoped>
