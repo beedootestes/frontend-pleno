@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { data } from '../assets/data/perguntas.json'
+import data from './perguntas.json';
 
 export const usePerguntaStore = defineStore({
     id: 'pergunta',
@@ -10,35 +10,32 @@ export const usePerguntaStore = defineStore({
         error: null,
         id: null,
     }),
-    getters: {
-        getPerguntasPorTeste: (state) => (testeId) => {
-            return state.perguntas.filter((pergunta) => pergunta.parent_id == testeId);
-        },
-    },
     actions: {
-        fetchPerguntas () {
-            this.perguntas = []
-            this.loading = true
-            try {
-                this.perguntas = JSON.parse(JSON.stringify(data));
-            } catch (error) {
-                this.error = error
-            } finally {
-                this.loading = false
-            }
-        },
-
-        async fetchPergunta (id) {
-            this.pergunta = null;
+        async fetchPerguntas () {
+            this.perguntas = [];
             this.loading = true;
             try {
-                await this.fetchPerguntas();
-                this.pergunta = this.perguntas.find(pergunta => pergunta.id === id);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                this.perguntas = data;
             } catch (error) {
                 this.error = error;
             } finally {
                 this.loading = false;
             }
-        }
+        },
+
+        async fetchPergunta (id) {
+            this.pergunta = {};
+            this.loading = true;
+            try {
+                // await this.fetchPerguntas();
+                this.pergunta = this.perguntas.find((pergunta) => pergunta.id === id);
+                this.loading = false;
+            } catch (error) {
+                this.error = error;
+            } finally {
+                this.loading = false;
+            }
+        },
     }
 })

@@ -1,27 +1,24 @@
 import { defineStore } from 'pinia'
-import testeData from '../assets/data/testes.json'
+import data from './testes.json'
 
 export const useTesteStore = defineStore({
     id: 'teste',
     state: () => ({
         testes: [],
-        teste: null,
         loading: false,
         error: null
     }),
-    getters: {
-        getPerguntasPorTeste: (state) => {
-            return (testeId) => state.testes.filter((teste) => teste.perguntaId === testeId)
-        }
-    },
     actions: {
-        async fetchPerguntas () {
+        async fetchTestes () {
             this.testes = []
             this.loading = true
             try {
-                this.testes = await testeData
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                this.testes = data
             } catch (error) {
-
+                this.error = error
+            } finally {
+                this.loading = false
             }
         }
     }
