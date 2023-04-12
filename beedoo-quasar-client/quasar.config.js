@@ -65,9 +65,9 @@ module.exports = configure(function (/* ctx */) {
       // vueDevtools,
       // vueOptionsAPI: false,
 
-      // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
+      rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      // publicPath: '/',
+      publicPath: '/beedoo-edtech-quiz',
       // analyze: true,
       // env: {},
       // rawDefine: {}
@@ -89,7 +89,7 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       // https: true
       open: false,
-      port: 8080,
+      // port: 8080,
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework

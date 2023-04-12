@@ -20,15 +20,14 @@ const routes = [
       children: [
         { path: '', component: () => import('pages/PerguntasPage.vue') }
       ]
-    },  */
+    }, */
   {
-    path: '/pergunta/:id',
-    name: 'pergunta',
+    path: '/pergunta/:parentId',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/_PerguntasPage.vue') }
+      { path: '', name: 'pergunta', component: () => import('pages/_PerguntasPage.vue') }
     ],
-    props: true
+    // props: true
   },
   {
     path: '/resposta',

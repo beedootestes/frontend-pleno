@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul v-for="pergunta in perguntas" :key="pergunta.id">
+        <ul v-for="pergunta in perguntasFiltradas" :key="pergunta.id">
             <li>Pergunta: {{ pergunta.text }}</li>
             <li>Id: {{ pergunta.id }}</li>
             <li>Id do teste: {{ pergunta.parent_id }}</li>
@@ -27,7 +27,7 @@ const perguntas = computed(() => perguntaStore.perguntas)
 const loading = computed(() => perguntaStore.$state.loading);
 const error = computed(() => perguntaStore.$state.error);
 
-// const perguntasFiltradas = perguntas.filter(p => p.parent_id === 77296)
+const perguntasFiltradas = perguntas.filter(p => p.parent_id === 77296)
 
 // Chame a action fetchPerguntas para carregar os dados
 perguntaStore.fetchPerguntas();

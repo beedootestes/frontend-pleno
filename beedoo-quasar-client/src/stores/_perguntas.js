@@ -5,37 +5,36 @@ export const usePerguntaStore = defineStore({
     id: 'pergunta',
     state: () => ({
         perguntas: [],
-        pergunta: null,
-        loading: false,
+        perguntasFiltradas: [],
+        loading: null,
         error: null,
-        id: null,
     }),
     actions: {
         async fetchPerguntas () {
-            this.perguntas = [];
             this.loading = true;
+            this.perguntas = [];
+            this.error = null;
             try {
                 await new Promise((resolve) => setTimeout(resolve, 1000));
                 this.perguntas = data;
+                this.loading = false;
             } catch (error) {
                 this.error = error;
-            } finally {
                 this.loading = false;
             }
         },
-
-        async fetchPergunta (id) {
-            this.pergunta = {};
+        async fetchPerguntasFiltradas (parentId) {
+            console.log("_perguntas.js: ", parentId);
             this.loading = true;
+            await this.fetchPerguntas();
+            this.error = null;
             try {
-                // await this.fetchPerguntas();
-                this.pergunta = this.perguntas.find((pergunta) => pergunta.id === id);
+                this.perguntasFiltradas = this.perguntas.filter(pergunta => pergunta.parent_id == parentId);
                 this.loading = false;
             } catch (error) {
                 this.error = error;
-            } finally {
                 this.loading = false;
             }
-        },
+        }
     }
 })

@@ -1,15 +1,15 @@
 <template>
     <section class="q-pa-md" style="max-width: 350px">
-        <article v-if="loading">
+        <article v-if="state.loading">
             Carregando....
         </article>
 
         <article v-else>
-            <p v-if="error">{{ error }}</p>
+            <p v-if="state.error">{{ state.error }}</p>
 
-            <q-list v-else v-for="pergunta in perguntasFiltradas" :key="pergunta.id" bordered separator>
+            <q-list v-else v-for="pergunta in state.perguntasFiltradas" :key="pergunta.id" bordered separator>
                 <q-item clickable v-ripple dense exact>
-                    <q-item-section>{{ pergunta.title }}</q-item-section>
+                    <q-item-section>{{ pergunta.text }}</q-item-section>
                     <q-item-section side>
                         <q-icon name="arrow_forward_ios" />
                     </q-item-section>
@@ -20,28 +20,34 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { reactive } from 'vue';
 import { usePerguntaStore } from 'src/stores/_perguntas';
+import { useRoute } from 'vue-router';
 
-/* const props = defineProps({
-    id: {
-        type: String,
-        required: true
-    }
-}); */
-
-const { id } = getCurrentInstance().props;
-
-const perguntaStore = usePerguntaStore();
-
-const perguntas = computed(() => perguntaStore.perguntas);
-
-const loading = computed(() => perguntaStore.$state.loading);
-const error = computed(() => perguntaStore.$state.error);
-
-const perguntasFiltradas = computed(() => {
-    return perguntas.value.filter(p => p.parent_id === id);
+const state = reactive({
+    perguntasFiltradas: [],
+    loading: false,
+    error: null,
+    parentId: null,
 });
 
-perguntaStore.fetchPerguntas();
+const route = useRoute()
+state.parentId = route.params.parentId;
+console.log("_PerguntasPage.vue: ", state.parentId);
+
+const perguntaStore = usePerguntaStore();
+console.log("_PerguntasPage.vue: ", perguntaStore.perguntasFiltradas);
+
+const fetchData = async () => {
+    try {
+        await perguntaStore.fetchPerguntasFiltradas(state.parentId);
+        state.perguntasFiltradas = perguntaStore.perguntasFiltradas;
+        state.loading = perguntaStore.loading;
+        state.error = perguntaStore.error;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+fetchData();
 </script>
