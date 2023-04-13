@@ -16,9 +16,9 @@
                         pergunta id: {{ pergunta.id }} | {{ pergunta.text }} ({{ pergunta.beetcoins }} moedas)
                     </p>
 
-                    <q-list v-if="state.respostasFiltradas.length" class="q-mb-lg">
+                    <q-list class="q-mb-lg">
                         <q-item tag="resposta" class="q-list_answer_class q-mb-sm"
-                            v-for="resposta in getRespostasFiltradas(pergunta.id)" :key="resposta.id" :class="{
+                            v-for="resposta in state.respostasFiltradas" :key="resposta.id" :class="{
                                 'correta': resposta.is_correct,
                                 'incorreta': !resposta.is_correct,
                             }" clickable v-ripple dense exact>
@@ -37,6 +37,7 @@
         </section>
     </q-page>
 </template>
+pomf2.lain.la
 
 <script setup>
 import { reactive } from "vue";
@@ -47,6 +48,7 @@ import { useRoute, useRouter } from "vue-router";
 const state = reactive({
     perguntasFiltradas: [],
     respostasFiltradas: [],
+    respostasPorPergunta: [],
     loading: false,
     error: null,
     parentId: null,
@@ -77,29 +79,30 @@ const fetchData = async () => {
     try {
         await perguntaStore.fetchPerguntasFiltradas(state.parentId);
 
-        const questionIds = perguntaStore.perguntasFiltradas.map((pergunta) => pergunta.id);
+        const questionIds = perguntaStore.perguntasFiltradas.map(pergunta => pergunta.id);
         console.log(questionIds);
+
+        const respostasPorPergunta = {};
 
         for (const questionId of questionIds) {
             await respostaStore.fetchRespostasFiltradas(questionId);
-            // console.log("questionId | _PerguntasTeste.vue: ", questionId);
             state.questionId = questionId;
+            // console.log("questionId | _PerguntasTeste.vue: ", questionId);
+
+
+            respostasPorPergunta[questionId] = respostaStore.respostasFiltradas;
+
         }
 
         state.perguntasFiltradas = perguntaStore.perguntasFiltradas;
-        state.respostasFiltradas = respostaStore.respostasFiltradas;
+        state.respostasFiltradas = respostasPorPergunta;
+        console.log(state.respostasFiltradas);
         state.loading = perguntaStore.loading || respostaStore.loading;
         state.error = perguntaStore.error || respostaStore.error;
     } catch (error) {
         console.error(error);
     }
 };
+
 fetchData();
-
-const getRespostasFiltradas = (parentId) => {
-    console.log("_PerguntasPage.vue | getRespostasFiltradas: ", respostaStore.respostasFiltradas.filter(resposta => resposta.question_id === parentId));
-    return respostaStore.respostasFiltradas.filter(resposta => resposta.question_id === parentId);
-};
-
-
 </script>
