@@ -1,26 +1,29 @@
 <template>
-    <section class="q-pa-md q-pa-md q-flex q-items-center q-justify-center" style="max-width: 350px">
-        <article v-if="state.loading">
-            Carregando....
-        </article>
+    <q-page padding>
+        <section class="q-pa-md q-pa-md q-flex q-items-center q-justify-center" style="max-width: 350px">
+            <article v-if="state.loading">
+                Carregando....
+            </article>
 
-        <article v-else>
-            <p v-if="state.error">{{ state.error }}</p>
+            <article v-else>
+                <p v-if="state.error">{{ state.error }}</p>
 
-            <q-list class="q-mb-lg" v-else v-for="pergunta in state.perguntasFiltradas" :key="pergunta.id" bordered
-                separator>
-                <q-item clickable v-ripple dense exact>
-                    <q-item-section>Pergunta: {{ pergunta.text }}</q-item-section>
-                </q-item>
-
-                <template v-if="state.respostasFiltradas.length">
-                    <q-item v-for="resposta in state.respostasFiltradas" :key="resposta.id" clickable v-ripple dense exact>
-                        <q-item-section>Resposta: {{ resposta.text }}</q-item-section>
+                <q-list class="q-mb-lg" v-else v-for="pergunta in state.perguntasFiltradas" :key="pergunta.id" bordered
+                    separator>
+                    <q-item clickable v-ripple dense exact>
+                        <q-item-section>Pergunta: {{ pergunta.text }}</q-item-section>
                     </q-item>
-                </template>
-            </q-list>
-        </article>
-    </section>
+
+                    <template v-if="state.respostasFiltradas.length">
+                        <q-item v-for="resposta in state.respostasFiltradas" :key="resposta.id" clickable v-ripple dense
+                            exact>
+                            <q-item-section>Resposta: {{ resposta.text }}</q-item-section>
+                        </q-item>
+                    </template>
+                </q-list>
+            </article>
+        </section>
+    </q-page>
 </template>
 
 <script setup>
