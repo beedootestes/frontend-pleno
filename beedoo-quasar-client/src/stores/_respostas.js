@@ -5,6 +5,7 @@ export const useRespostaStore = defineStore({
     id: 'resposta',
     state: () => ({
         respostas: [],
+        respostasFiltradas: [],
         loading: false,
         error: null,
     }),
@@ -13,11 +14,25 @@ export const useRespostaStore = defineStore({
             this.respostas = [];
             this.loading = true;
             try {
-                await new Promise((resolve) => setTimeout(resolve, 1000));
                 this.respostas = data;
             } catch (error) {
                 this.error = error;
             } finally {
+                this.loading = false;
+            }
+        },
+
+        async fetchRespostasFiltradas (questionId) {
+            // console.log("_respostas.js: ", questionId);
+            this.loading = true;
+            await this.fetchRespostas();
+            this.error = null;
+            try {
+                this.respostasFiltradas = this.respostas.filter(resposta => resposta.question_id == questionId);
+                // console.log("_respostas.js: ", this.respostasFiltradas = this.respostas.filter(resposta => resposta.question_id == questionId));
+                this.loading = false;
+            } catch (error) {
+                this.error = error;
                 this.loading = false;
             }
         }

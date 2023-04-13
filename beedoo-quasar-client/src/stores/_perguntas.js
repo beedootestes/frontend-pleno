@@ -15,7 +15,6 @@ export const usePerguntaStore = defineStore({
             this.perguntas = [];
             this.error = null;
             try {
-                await new Promise((resolve) => setTimeout(resolve, 1000));
                 this.perguntas = data;
                 this.loading = false;
             } catch (error) {
@@ -23,13 +22,15 @@ export const usePerguntaStore = defineStore({
                 this.loading = false;
             }
         },
+
         async fetchPerguntasFiltradas (parentId) {
-            console.log("_perguntas.js: ", parentId);
+            // console.log("_perguntas.js: ", parentId);
             this.loading = true;
             await this.fetchPerguntas();
             this.error = null;
             try {
                 this.perguntasFiltradas = this.perguntas.filter(pergunta => pergunta.parent_id == parentId);
+                // console.log("_perguntas.js: ", this.perguntasFiltradas = this.perguntas.filter(pergunta => pergunta.parent_id == parentId));
                 this.loading = false;
             } catch (error) {
                 this.error = error;

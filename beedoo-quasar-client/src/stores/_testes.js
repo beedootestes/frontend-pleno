@@ -13,7 +13,6 @@ export const useTesteStore = defineStore({
             this.testes = []
             this.loading = true
             try {
-                await new Promise((resolve) => setTimeout(resolve, 1000));
                 this.testes = data
             } catch (error) {
                 this.error = error

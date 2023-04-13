@@ -1,5 +1,5 @@
 <template>
-    <section class="q-pa-md" style="max-width: 350px">
+    <section class="q-pa-md q-pa-md q-flex q-items-center q-justify-center" style="max-width: 450px">
         <article v-if="loading">
             Carregando....
         </article>
@@ -9,7 +9,7 @@
 
             <q-list v-else v-for="teste in testes" :key="teste.id" bordered separator>
                 <q-item :to="{ name: 'pergunta', params: { parentId: teste.id } }" clickable v-ripple dense exact>
-                    <q-item-section>{{ teste.title }}</q-item-section>
+                    <q-item-section>Testes rápidos: {{ teste.title }}</q-item-section>
                     <q-item-section side>
                         <q-icon name="arrow_forward_ios" />
                     </q-item-section>

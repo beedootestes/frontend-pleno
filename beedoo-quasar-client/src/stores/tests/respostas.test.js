@@ -5,29 +5,58 @@ import { useRespostaStore } from '../_respostas.js';
 import data from './respostas.json';
 
 describe('useRespostaStore', () => {
-    let respostaStore; // Declare a variable to hold the store instance
+    let respostaStore;
 
     beforeEach(() => {
-        const app = createApp({}); // Create an instance of Vue app
+        const app = createApp({});
 
-        app.use(createPinia()); // Install Pinia in the Vue app
-        app.use(PiniaVuePlugin); // Use the Pinia Vue plugin
+        app.use(createPinia());
+        app.use(PiniaVuePlugin);
 
-        respostaStore = useRespostaStore(); // Initialize the store before each test
+        respostaStore = useRespostaStore();
     });
 
-    test('should initialize with empty state', () => {
-        expect(respostaStore.respostas).toEqual([]); // Verify if the initial state of 'respostas' is an empty array
-        expect(respostaStore.loading).toBe(false); // Verify if the initial state of 'loading' is false
-        expect(respostaStore.error).toBeNull(); // Verify if the initial state of 'error' is null
+    it('1 - should initialize with empty state', () => {
+        expect(respostaStore.respostas).toEqual([]);
+        expect(respostaStore.loading).toBe(false);
+        expect(respostaStore.error).toBeNull();
     });
 
-    test('should fetch responses correctly from JSON data', async () => {
-        await respostaStore.fetchRespostas(); // Call the 'fetchRespostas' action
+    it('2 - should have correct initial state', () => {
+        expect(respostaStore.respostas).toEqual([]);
+        expect(respostaStore.respostasFiltradas).toEqual([]);
+        expect(respostaStore.loading).toBeFalsy();
+        expect(respostaStore.error).toBeNull();
+    });
 
-        // Verify if the data from the JSON is loaded correctly into the store
-        expect(respostaStore.respostas).toEqual(data); // Verify if 'respostas' is equal to the 'data' imported from the JSON
-        expect(respostaStore.loading).toBe(false); // Verify if 'loading' is false after the data is fetched
-        expect(respostaStore.error).toBeNull(); // Verify if 'error' is null after the data is fetched
+    it('3 - should fetch responses correctly from JSON data', async () => {
+        await respostaStore.fetchRespostas();
+
+        expect(respostaStore.respostas).toEqual(data);
+        expect(respostaStore.loading).toBe(false);
+        expect(respostaStore.error).toBeNull();
+    });
+
+    test('4 - should fetch filtered responses correctly', async () => {
+        const respostaStore = useRespostaStore();
+        const questionId = 42031;
+
+        jest.useFakeTimers();
+        const fetchPromise = respostaStore.fetchRespostasFiltradas(questionId);
+        jest.advanceTimersByTime(1000);
+        jest.useRealTimers();
+
+        expect(respostaStore.loading).toBe(true);
+        expect(respostaStore.error).toBeNull();
+        expect(respostaStore.respostasFiltradas).toEqual([]);
+
+        await fetchPromise;
+
+        expect(respostaStore.loading).toBe(false);
+        expect(respostaStore.error).toBeNull();
+        expect(respostaStore.respostasFiltradas).toEqual(
+            data.filter((resposta) => resposta.question_id == questionId)
+        );
+        expect(respostaStore.loading).toBe(false);
     });
 });
