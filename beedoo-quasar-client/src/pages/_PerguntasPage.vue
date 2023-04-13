@@ -1,36 +1,48 @@
 <template>
     <q-page padding>
-        <section class="q-pa-md q-pa-md q-flex q-items-center q-justify-center" style="max-width: 350px">
-            <article v-if="state.loading">
-                Carregando....
-            </article>
+        <section class="q-pa-md q-pa-md q-flex q-items-center q-justify-center">
+            <p>Perguntas</p>
+            <q-icon @click="goToHome" class="nav_arrow" name="keyboard_backspace" size="30px" />
+
+            <article v-if="state.loading">Carregando....</article>
 
             <article v-else>
                 <p v-if="state.error">{{ state.error }}</p>
 
-                <q-list class="q-mb-lg" v-else v-for="pergunta in state.perguntasFiltradas" :key="pergunta.id" bordered
+                <div class="q-mb-lg" v-else v-for="pergunta in state.perguntasFiltradas" :key="pergunta.id" bordered
                     separator>
-                    <q-item clickable v-ripple dense exact>
-                        <q-item-section>Pergunta: {{ pergunta.text }}</q-item-section>
-                    </q-item>
+                    <p class="q-mb-sm q-list_answer_title">
+                        <q-icon name="help" size="35px" style="color: #eec400" />
+                        pergunta id: {{ pergunta.id }} | {{ pergunta.text }} ({{ pergunta.beetcoins }} moedas)
+                    </p>
 
-                    <template v-if="state.respostasFiltradas.length">
-                        <q-item v-for="resposta in state.respostasFiltradas" :key="resposta.id" clickable v-ripple dense
-                            exact>
-                            <q-item-section>Resposta: {{ resposta.text }}</q-item-section>
+                    <q-list v-if="state.respostasFiltradas.length" class="q-mb-lg">
+                        <q-item tag="resposta" class="q-list_answer_class q-mb-sm"
+                            v-for="resposta in getRespostasFiltradas(pergunta.id)" :key="resposta.id" :class="{
+                                'correta': resposta.is_correct,
+                                'incorreta': !resposta.is_correct,
+                            }" clickable v-ripple dense exact>
+
+                            <q-item-section avatar>
+                                <q-radio v-model="state.checkbox" :val="resposta.id" />
+                            </q-item-section>
+
+                            <q-item-section>resposta id: {{ resposta.id }} | texto: {{ resposta.text }} | parent_id:{{
+                                resposta.question_id }}
+                            </q-item-section>
                         </q-item>
-                    </template>
-                </q-list>
+                    </q-list>
+                </div>
             </article>
         </section>
     </q-page>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
-import { usePerguntaStore } from 'src/stores/_perguntas';
-import { useRespostaStore } from 'src/stores/_respostas';
-import { useRoute } from 'vue-router';
+import { reactive } from "vue";
+import { usePerguntaStore } from "src/stores/_perguntas";
+import { useRespostaStore } from "src/stores/_respostas";
+import { useRoute, useRouter } from "vue-router";
 
 const state = reactive({
     perguntasFiltradas: [],
@@ -39,11 +51,20 @@ const state = reactive({
     error: null,
     parentId: null,
     questionId: null,
+    checkbox: null,
 });
 
-const route = useRoute()
+
+const route = useRoute();
 state.parentId = route.params.parentId;
 // console.log("_PerguntasPage.vue: ", state.parentId);
+
+const router = useRouter();
+const goToHome = () => {
+    router.push({
+        name: "home"
+    });
+};
 
 const perguntaStore = usePerguntaStore();
 // console.log("_PerguntasPage.vue: ", perguntaStore.perguntasFiltradas);
@@ -56,10 +77,13 @@ const fetchData = async () => {
     try {
         await perguntaStore.fetchPerguntasFiltradas(state.parentId);
 
-        const questionIds = perguntaStore.perguntasFiltradas.map(pergunta => pergunta.id);
+        const questionIds = perguntaStore.perguntasFiltradas.map((pergunta) => pergunta.id);
+        console.log(questionIds);
 
         for (const questionId of questionIds) {
             await respostaStore.fetchRespostasFiltradas(questionId);
+            // console.log("questionId | _PerguntasTeste.vue: ", questionId);
+            state.questionId = questionId;
         }
 
         state.perguntasFiltradas = perguntaStore.perguntasFiltradas;
@@ -70,6 +94,12 @@ const fetchData = async () => {
         console.error(error);
     }
 };
-
 fetchData();
+
+const getRespostasFiltradas = (parentId) => {
+    console.log("_PerguntasPage.vue | getRespostasFiltradas: ", respostaStore.respostasFiltradas.filter(resposta => resposta.question_id === parentId));
+    return respostaStore.respostasFiltradas.filter(resposta => resposta.question_id === parentId);
+};
+
+
 </script>

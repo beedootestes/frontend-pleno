@@ -22,3 +22,51 @@ body {
 .page-title {
   font-size: 42px;
 }
+
+.nav_arrow {
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.q-list_test_class {
+  background-color: white;
+  border-radius: 10px;
+  height: 75px;
+  width: 320px;
+}
+
+.q-list_answer_class {
+  // width: 350px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.correta {
+  background-color: #8cb48f !important;
+}
+
+.incorreta {
+  background-color: #e6576e !important;
+}
+
+.q-checkbox__inner {
+  display: none;
+}
+
+@media only screen and (min-width: 64.063em) {
+  .q-list_answer_class {
+    width: 500px;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  .q-list_answer_title {
+    width: 500px;
+  }
+}

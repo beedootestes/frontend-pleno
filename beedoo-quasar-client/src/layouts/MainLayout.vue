@@ -3,12 +3,16 @@
     <q-header elevated reveal>
       <q-toolbar>
         <q-toolbar-title>
-          <img alt="Quasar logo" src="~assets/logo-beedoo.png" style="width: 120px">
+          <img
+            alt="Quasar logo"
+            src="~assets/beedoo-logo-dark.png"
+            style="width: 120px"
+          />
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
-    <q-page-container class="row justify-center ">
+    <q-page-container class="row justify-center">
       <router-view />
     </q-page-container>
 
@@ -16,7 +20,7 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar>
         </q-toolbar-title>
       </q-toolbar>
@@ -25,9 +29,9 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'MainLayout',
-})
+  name: "MainLayout",
+});
 </script>

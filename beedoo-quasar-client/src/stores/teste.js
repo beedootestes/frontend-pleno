@@ -1,26 +1,25 @@
-import { defineStore } from 'pinia'
-import testeData from '../assets/data/testes.json'
+import { defineStore } from "pinia";
+import testeData from "../assets/data/testes.json";
 
 export const testeStore = defineStore({
-  id: 'teste',
+  id: "teste",
   state: () => ({
     data: [],
     loading: false,
   }),
   getters: {
-    getData: state => state.data,
+    getData: (state) => state.data,
   },
   actions: {
-    loadData () {
+    loadData() {
       try {
-        this.loading = true
+        this.loading = true;
         this.data = testeData;
       } catch (error) {
-        console.log(`Error fetching testes: ${{ error }}`)
+        console.log(`Error fetching testes: ${{ error }}`);
       } finally {
-        this.loading = false
+        this.loading = false;
       }
-    }
-
-  }
-})
+    },
+  },
+});
