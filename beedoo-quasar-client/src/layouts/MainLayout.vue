@@ -17,7 +17,7 @@
       <router-view />
     </q-page-container>
 
-    <q-footer elevated class="text-dark row justify-center mobile-only desktop-hide">
+    <q-footer elevated class="text-dark row justify-center desktop-hide-class">
       <q-toolbar class="row justify-around align-center gap-mg">
         <div class="row justify-around align-center">
           <q-icon @click="feedPage" class="q-mr-lg q-icon-nav" size="35px" name="rss_feed" />

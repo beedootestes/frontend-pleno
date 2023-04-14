@@ -79,6 +79,7 @@ body {
   cursor: pointer;
 }
 
+
 @media only screen and (min-width: 64.063em) {
   .q-list_answer_class {
     width: 500px;
@@ -88,5 +89,9 @@ body {
 
   .q-list_answer_title {
     width: 500px;
+  }
+
+  .desktop-hide-class {
+    display: none;
   }
 }
