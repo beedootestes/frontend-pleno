@@ -1,53 +1,48 @@
-# Beedoo Edtech (beedoo-quasar-client)
+# beedoo-quasar-client
 
-A Beedoo Edtech quiz app
+> A Beedoo Edtech quiz app
 
-## Install the dependencies
+## Descrição
 
-```bash
-yarn
-# or
-npm install
-```
+Este é um aplicativo de quiz desenvolvido pela Beedoo Edtech. Ele foi construído usando o framework Quasar e é destinado para uso educacional.
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+## Instalação
+
+Certifique-se de ter o Node.js e o npm (ou yarn) instalados em sua máquina. Em seguida, siga os passos abaixo:
 
 ```bash
-quasar dev
+# Clone o repositório
+git clone https://github.com/seu-usuario/beedoo-quasar-client.git
+
+# Altere a branch
+git checkout lucas-marra
+
+# Entre no diretório do projeto
+cd beedoo-quasar-client
+
+# Instale as dependências
+yarn install # ou npm install
 ```
 
-### Lint the files
+## Scripts Disponíveis
+
+No diretório do projeto, você pode executar os seguintes scripts:
 
 ```bash
-yarn lint
-# or
-npm run lint
+# Inicia o servidor de desenvolvimento do Quasar. 
+$ npm run dev  
+
+# Compila o aplicativo para produção.
+$ npm run build 
 ```
 
-### Format the files
+## Objetivos
 
-```bash
-yarn format
-# or
-npm run format
-```
-
-### Build the app for production
-
-```bash
-quasar build
-```
-
-### Customize the configuration
-
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
-
-
-- [x] Página exibindo a listagem dos testes relâmpagos (encorajamos o uso de Vue3);    
+- [x] Página exibindo a listagem dos testes relâmpagos (encorajamos o uso de Vue3);  
 - [x] Utilize como base os arquivos JSON da pasta data;
 - [x] testes.json fazem referência aos Testes Relâmpagos;
 - [x] perguntas.json são as perguntas de cada Teste Relâmpago;
-- [x] respostas.json são as alternativas de cada pergunta;
+- [x] respostas.json são as alternativas de cada pergunta; (Realizado com ressalvas)
 - [x] Página para a resolução dos testes;
 - [x] Botão para verificar acertividade do teste;
 - [ ] As alternativas devem ser destacadas conforme a imagem de exemplo;

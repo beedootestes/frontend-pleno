@@ -1,34 +1,49 @@
-# Teste Frontend Pleno
-<img src="./imgs/logo-beedoo.png" alt="Beedoo logo">
+# beedoo-quasar-client
 
-## Instruções:
- - Faça um _fork_ deste repositório;
- - Crie uma nova _branch_ em seu nome;
- - Oberve as imagens para entender o layout: [imagem 01](./imgs/01-listagem.png), [imagem 02](./imgs/02-perguntas.png), [imagem 03](./imgs/03-perguntas-correcao.png);
- - Desenvolva o código como desejar (Vue3 é desejável);
- - Ao finalizar o teste, submeta um _pull request_ e aguarde a avaliação;
+> A Beedoo Edtech quiz app
 
-## Requisitos mínimos
- - Página exibindo a listagem dos _testes relâmpagos_ (encorajamos o uso de Vue3);
- - Utilize como base os arquivos _JSON_ da pasta _data_;
-   - _testes.json_ fazem referência aos _Testes Relâmpagos_;
-   - _perguntas.json_ são as _perguntas_ de cada _Teste Relâmpago_;
-   - _respostas.json_ são as alternativas de cada _pergunta_;
- - Página para a resolução dos testes;
- - Botão para verificar acertividade do teste;
- - As alternativas devem ser destacadas conforme a imagem de exemplo;
- - Cobertura de testes utilizando o framework de sua preferência. _Jest_ e _Cypress_ são nossas sugestões;
+## Descrição
 
-## O que será avaliado:
- - Testes aplicados;
- - Clean Code;
- - Componentização;
+Este é um aplicativo de quiz desenvolvido pela Beedoo Edtech. Ele foi construído usando o framework Quasar e é destinado para uso educacional.
 
-## Notas
- - A realização do teste não garante contratação;
- - Ainda que o teste seja entregue sem a realização dos requisitos mínimos, o teste será avaliado; 😊
- - Você tem total liberdade para utilizar e instalar quaisquer bibliotecas que desejar;
- - Você pode realizar o teste utilizando Javascript (ES6) ou qualquer de seus frameworks (já falamos que gostamos muito de Vue3?)
- - Lembre-se de fazer um _fork_ deste repositório! Apenas cloná-lo vai te impedir de criar o _pull request_ e dificultar a entrega;
+## Instalação
 
-### Boa sorte
+Certifique-se de ter o Node.js e o npm (ou yarn) instalados em sua máquina. Em seguida, siga os passos abaixo:
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/beedoo-quasar-client.git
+
+# Altere a branch
+git checkout lucas-marra
+
+# Entre no diretório do projeto
+cd beedoo-quasar-client
+
+# Instale as dependências
+yarn install # ou npm install
+```
+
+## Scripts Disponíveis
+
+No diretório do projeto, você pode executar os seguintes scripts:
+
+```bash
+# Inicia o servidor de desenvolvimento do Quasar. 
+$ npm run dev  
+
+# Compila o aplicativo para produção.
+$ npm run build 
+```
+
+## Objetivos
+
+- [x] Página exibindo a listagem dos testes relâmpagos (encorajamos o uso de Vue3);  
+- [x] Utilize como base os arquivos JSON da pasta data;
+- [x] testes.json fazem referência aos Testes Relâmpagos;
+- [x] perguntas.json são as perguntas de cada Teste Relâmpago;
+- [x] respostas.json são as alternativas de cada pergunta; (Realizado com ressalvas)
+- [x] Página para a resolução dos testes;
+- [x] Botão para verificar acertividade do teste;
+- [ ] As alternativas devem ser destacadas conforme a imagem de exemplo;
+- [x] Cobertura de testes utilizando o framework de sua preferência. Jest e Cypress são nossas sugestões;
