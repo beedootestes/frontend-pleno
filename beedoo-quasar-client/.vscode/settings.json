@@ -5,5 +5,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": ["source.fixAll.eslint"],
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
-  "cSpell.diagnosticLevel": "Hint"
+  "cSpell.diagnosticLevel": "Hint",
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///d%3A/Github/frontend-pleno/beedoo-quasar-client/.github/workflows/deploy.yml"
+  }
 }
