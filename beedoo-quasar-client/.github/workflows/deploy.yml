@@ -11,6 +11,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "16.18.0"
+
+      - name: Move to project
+        run: cd beedo-quasar-cliente
+
       - name: Install dependencies
         run: yarn
 
