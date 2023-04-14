@@ -13,31 +13,32 @@
                     separator>
                     <p class="q-mb-sm q-list_answer_title">
                         <q-icon name="help" size="35px" style="color: #eec400" />
-                        pergunta id: {{ pergunta.id }} | {{ pergunta.text }} ({{ pergunta.beetcoins }} moedas)
+                        {{ pergunta.text }} ({{ pergunta.beetcoins }} moedas)
                     </p>
 
                     <q-list class="q-mb-lg">
                         <q-item tag="resposta" class="q-list_answer_class q-mb-sm"
-                            v-for="resposta in state.respostasFiltradas" :key="resposta.id" :class="{
-                                'correta': resposta.is_correct,
-                                'incorreta': !resposta.is_correct,
-                            }" clickable v-ripple dense exact>
+                            v-for="resposta in state.respostasFiltradas" :key="resposta.id" :class="resposta.classe"
+                            clickable v-ripple dense exact>
 
                             <q-item-section avatar>
-                                <q-radio v-model="state.checkbox" :val="resposta.id" />
-                            </q-item-section>
-
-                            <q-item-section>resposta id: {{ resposta.id }} | texto: {{ resposta.text }} | parent_id:{{
-                                resposta.question_id }}
+                                <q-radio v-model="state.checkbox" :val="resposta.id" :key="resposta.id" color="black"
+                                    @click="marcarResposta(resposta)">
+                                    {{ resposta.text }}
+                                </q-radio>
                             </q-item-section>
                         </q-item>
                     </q-list>
                 </div>
+
+                <q-btn class="q-mr-lg q-mb-md float-left" @click="verificarRespostas" color="white" text-color="black"
+                    label="Corrigir" />
+                <q-btn class="q-ml-lg float-right" @click="limparRepostas" color="white" text-color="black"
+                    label="Reiniciar" />
             </article>
         </section>
     </q-page>
 </template>
-pomf2.lain.la
 
 <script setup>
 import { reactive } from "vue";
@@ -48,7 +49,8 @@ import { useRoute, useRouter } from "vue-router";
 const state = reactive({
     perguntasFiltradas: [],
     respostasFiltradas: [],
-    respostasPorPergunta: [],
+    respostasSelecionadas: [],
+    questionIds: [],
     loading: false,
     error: null,
     parentId: null,
@@ -69,10 +71,10 @@ const goToHome = () => {
 };
 
 const perguntaStore = usePerguntaStore();
-// console.log("_PerguntasPage.vue: ", perguntaStore.perguntasFiltradas);
+// console.log("1 - _PerguntasPage.vue: ", perguntaStore.perguntasFiltradas);
 
 const respostaStore = useRespostaStore();
-// console.log("_PerguntasPage.vue: ", respostaStore.respostasFiltradas);
+// console.log("2 - _PerguntasPage.vue: ", respostaStore.respostasFiltradas);
 
 
 const fetchData = async () => {
@@ -80,29 +82,72 @@ const fetchData = async () => {
         await perguntaStore.fetchPerguntasFiltradas(state.parentId);
 
         const questionIds = perguntaStore.perguntasFiltradas.map(pergunta => pergunta.id);
-        console.log(questionIds);
+        // console.log("3 - _PerguntasPage.vue | questionIds: ", questionIds);
 
-        const respostasPorPergunta = {};
+        const questionIdArray = [];
+        // console.log("4 - _PerguntasPage.vue | questionIdArray: ", questionIdArray);
 
         for (const questionId of questionIds) {
             await respostaStore.fetchRespostasFiltradas(questionId);
-            state.questionId = questionId;
-            // console.log("questionId | _PerguntasTeste.vue: ", questionId);
-
-
-            respostasPorPergunta[questionId] = respostaStore.respostasFiltradas;
-
+            questionIdArray.push(questionId);
+            // console.log("5 - _PerguntasPage.vue | questionId: ", questionId);
         }
 
+        state.questionIds = questionIdArray;
+        // console.log("6 - _PerguntasPage.vue | questionIdArray :", questionIdArray);
+
+        state.respostasFiltradas = respostaStore.respostasFiltradas;
+        // console.log("7 - _PerguntasPage.vue | respostaStore.respostasFiltradas: ", respostaStore.respostasFiltradas);
+
         state.perguntasFiltradas = perguntaStore.perguntasFiltradas;
-        state.respostasFiltradas = respostasPorPergunta;
-        console.log(state.respostasFiltradas);
         state.loading = perguntaStore.loading || respostaStore.loading;
         state.error = perguntaStore.error || respostaStore.error;
     } catch (error) {
         console.error(error);
     }
 };
-
 fetchData();
+
+const verificarRespostas = () => {
+    state.respostasSelecionadas = [];
+
+    for (const resposta of state.respostasFiltradas) {
+        if (state.checkbox === resposta.id) {
+            state.respostasSelecionadas.push(resposta);
+        }
+    }
+
+    for (const resposta of state.respostasFiltradas) {
+        switch (true) {
+            case state.respostasSelecionadas.includes(resposta) && state.checkbox:
+                resposta.classe = 'resposta_selecionada';
+                break;
+            case state.respostasSelecionadas.includes(resposta) && resposta.is_correct:
+                resposta.classe = 'correta';
+                break;
+            case state.respostasSelecionadas.includes(resposta) && !resposta.is_correct:
+                resposta.classe = 'incorreta';
+                break;
+            default:
+                resposta.classe = '';
+                resposta.style = '';
+                break;
+        }
+    }
+};
+
+const limparRepostas = () => {
+    for (const resposta of state.respostasFiltradas) {
+        resposta.classe = '';
+        resposta.style = '';
+    }
+    state.checkbox = null;
+}
+
+const marcarResposta = (resposta) => {
+    for (const r of state.respostasFiltradas) {
+        r.classe = '';
+    }
+    resposta.classe = 'resposta_selecionada';
+};
 </script>

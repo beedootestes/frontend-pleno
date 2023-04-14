@@ -37,7 +37,7 @@ body {
 .q-list_test_class {
   background-color: white;
   border-radius: 10px;
-  height: 75px;
+  height: 60px;
   width: 320px;
 }
 
@@ -47,16 +47,36 @@ body {
   background-color: white;
 }
 
+.resposta_selecionada {
+  background-color: #F6E280;
+  border: 2px solid #707070;
+}
+
 .correta {
   background-color: #8cb48f !important;
 }
+
+.correta_border {
+  border: 2px solid #8cb48f;
+}
+
 
 .incorreta {
   background-color: #e6576e !important;
 }
 
+.incorreta_border {
+  border: 2px solid #e6576e;
+}
+
 .q-checkbox__inner {
   display: none;
+}
+
+.q-icon-nav {
+  width: 35px;
+  color: #BFBFBF;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 64.063em) {

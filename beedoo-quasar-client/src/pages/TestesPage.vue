@@ -26,7 +26,6 @@ import { useTesteStore } from "src/stores/_testes";
 const testeStore = useTesteStore();
 
 const testes = computed(() => testeStore.testes);
-console.log(testes);
 const loading = computed(() => testeStore.$state.loading);
 const error = computed(() => testeStore.$state.error);
 

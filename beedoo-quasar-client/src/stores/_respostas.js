@@ -23,7 +23,7 @@ export const useRespostaStore = defineStore({
     },
 
     async fetchRespostasFiltradas (questionId) {
-      // console.log("question_id | _respostas.js: ", questionId);
+      // console.log("1 - _respostas.js | question_id: ", questionId);
       this.loading = true;
       await this.fetchRespostas();
       this.error = null;
@@ -31,7 +31,7 @@ export const useRespostaStore = defineStore({
         this.respostasFiltradas = this.respostas.filter(
           (resposta) => resposta.question_id == questionId
         );
-        // console.log("array | _respostas.js: ", this.respostasFiltradas = this.respostas.filter(resposta => resposta.question_id == questionId));
+        // console.log("2 - _respostas.js | array.js: ", this.respostasFiltradas = this.respostas.filter(resposta => resposta.question_id == questionId));
         this.loading = false;
       } catch (error) {
         this.error = error;

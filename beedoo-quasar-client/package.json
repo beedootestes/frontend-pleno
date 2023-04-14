@@ -23,6 +23,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
     "@quasar/app-vite": "^1.0.0",
+    "@vue/test-utils": "^2.3.2",
     "autoprefixer": "^10.4.2",
     "babel-jest": "^29.5.0",
     "eslint": "^8.10.0",
