@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card-test">
+  <v-card class="card-test" @click="viewTest">
     <v-card-title class="card-name">
       <h4>{{ test.title }}</h4>
       <v-icon> mdi-chevron-right </v-icon>
@@ -10,7 +10,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { defineProps } from "vue";
-import * as TestsService from "@/services/quickTests.service";
+import { useTestsStore } from "@/store/testsStore.js";
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const props = defineProps({
   teste: {
@@ -20,13 +23,18 @@ const props = defineProps({
 });
 
 const test = ref(props.teste);
-const answers = ref([]);
-const questions = ref([]);
+const testsStore = useTestsStore();
+
+const viewTest = () => {
+  router.push({
+    name: "QuickTest",
+    params: { testId: JSON.stringify(test.value.id) },
+  });
+};
 
 const getAnswers = async () => {
   try {
-    const response = await TestsService.answers();
-    answers.value = response;
+    await testsStore.getAnswers();
   } catch (error) {
     console.error(error);
   }
@@ -34,36 +42,15 @@ const getAnswers = async () => {
 
 const getQuestions = async () => {
   try {
-    const response = await TestsService.questions();
-    questions.value = response;
+    await testsStore.getQuestions();
   } catch (error) {
     console.error(error);
   }
 };
 
-
-const getAnswersByTestId = () => {
-  const answersByTestId = answers.value.filter(
-    (answer) => answer.testId === test.value.id
-  );
-
-  return answersByTestId;
-};
-
-const getQuestionsByTestId =  () => {
-  const questionsByTestId = questions.value.filter(
-    (question) => question.parent_id === test.value.id
-  );
-
-  return questionsByTestId;
-};
-
 onMounted(async () => {
   await getQuestions();
   await getAnswers();
-
-  getAnswersByTestId();
-  getQuestionsByTestId();
 });
 </script>
 
@@ -74,6 +61,7 @@ onMounted(async () => {
   padding: 8px;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  cursor: pointer;
   .card-name {
     display: flex;
     justify-content: space-between;

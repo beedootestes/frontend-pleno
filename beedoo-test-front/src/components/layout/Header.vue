@@ -1,5 +1,5 @@
 <template>
-  <v-container class="header">
+  <div class="header">
     <div class="logo-wrapper">
       <img src="@/assets/logo-beedoo-light.png" class="logo" />
       <div class="user-picture">
@@ -15,7 +15,7 @@
         size="small"
       ></v-btn>
     </div>
-  </v-container>
+  </div>
 </template>
 
 <script setup></script>
@@ -29,6 +29,7 @@
   top: 0;
   z-index: 10;
   background-color: white;
+  padding: 16px 24px;
   .logo-wrapper {
     display: flex;
     justify-content: space-between;

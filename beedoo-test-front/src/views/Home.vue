@@ -1,19 +1,9 @@
 <template>
-  <Header />
-  <div class="content">
-    <QuickTests />
-  </div>
-  <Menu />
+  <TestsList />
 </template>
 
 <script setup>
-import Header from '@/components/Header.vue';
-import Menu from '@/components/Menu.vue'
-import QuickTests from '@/components/QuickTests.vue'
+import TestsList from "@/components/quickTests/TestsList.vue";
 </script>
 
-<style scoped>
-.content{
-  margin-top: 160px;
-}
-</style>
+<style scoped></style>
