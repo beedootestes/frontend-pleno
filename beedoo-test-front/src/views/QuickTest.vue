@@ -12,21 +12,32 @@
         <ul class="answers">
           <li
             class="answer"
-            :class="{ selected: isSelected(answer.id) }"
+            :class="{ selected: isSelected(question.id, answer.id) }"
             v-for="answer in getAnswersByTestId(question.id)"
             :key="answer.id"
-            @click="selectAnswer(answer.id)"
+            @click="selectAnswer(question.id, answer.id)"
           >
             {{ answer.text }}
+            <span v-if="showIcons && isSelected(question.id, answer.id)">
+              <v-icon v-if="isAnswerCorrect(question.id, answer.id)" color="success">
+                mdi-check
+              </v-icon>
+              <v-icon v-else color="error">mdi-close</v-icon>
+            </span>
           </li>
         </ul>
       </div>
+    </div>
+    <div class="footer mx-auto">
+      <v-btn class="button" @click="checkRightAnswers()" color="orange"
+        >Enviar</v-btn
+      >
     </div>
   </v-container>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import { useTestsStore } from "@/store/testsStore.js";
 import { useRoute, useRouter } from "vue-router";
 
@@ -34,9 +45,9 @@ const testsStore = useTestsStore();
 const route = useRoute();
 const router = useRouter();
 
+const showIcons = ref(false);
 const test = ref("");
 const questions = ref("");
-const selectedAnswer = ref(null);
 
 const testId = JSON.parse(route.params.testId);
 
@@ -62,13 +73,43 @@ const getQuestionsByTestId = () => {
   return questionsByTestId;
 };
 
-function isSelected(answerId) {
-  return selectedAnswer.value === answerId;
+const selectedAnswers = reactive(new Map());
+
+function isSelected(questionId, answerId) {
+  const questionAnswer = selectedAnswers.get(questionId);
+  return questionAnswer === answerId;
 }
 
-function selectAnswer(answerId) {
-  selectedAnswer.value = answerId;
+function selectAnswer(questionId, answerId) {
+  selectedAnswers.set(questionId, answerId);
 }
+
+const checkRightAnswers = () => {
+  const results = [];
+
+  for (const [questionId, answerId] of selectedAnswers) {
+    const answer = testsStore.answers.find(
+      (answer) => answer.id === answerId && answer.is_correct
+    );
+    const result = {
+      questionId,
+      answerId,
+      isCorrect: !!answer,
+    };
+    results.push(result);
+  }
+  showIcons.value = true;
+  return results;
+};
+
+function isAnswerCorrect(questionId, answerId) {
+  const answer = testsStore.answers.find(
+    (answer) => answer.id === answerId && answer.is_correct
+  );
+
+  return !!answer;
+}
+
 const goBack = () => {
   router.go(-1);
 };
@@ -102,11 +143,22 @@ onMounted(async () => {
       padding: 8px 16px;
       border-radius: 32px;
       cursor: pointer;
-      &.selected{
+      &.selected {
         background-color: lighten(#f3ef06, 30);
         outline: 2px solid black;
       }
     }
+  }
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  .button {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 32px;
+    color: black;
+    font-weight: bold;
   }
 }
 </style>

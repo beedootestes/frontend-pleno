@@ -3,17 +3,17 @@
     <v-main>
       <v-container>
         <v-bottom-navigation v-model="selectedItem">
-            <v-btn
-                v-for="item in menuItems"
-                :key="item"
-                :value="item"
-                :active="selectedItem === item"
-                @click="selectedItem = item"
-                color="orange"
-            >
-                <v-icon>{{ itemIcons[item] }}</v-icon>
-                {{ item }}
-            </v-btn>
+          <v-btn
+            v-for="item in menuItems"
+            :key="item"
+            :value="item"
+            :active="selectedItem === item"
+            @click="selectedItem = item"
+            color="orange"
+          >
+            <v-icon>{{ itemIcons[item] }}</v-icon>
+            {{ item }}
+          </v-btn>
         </v-bottom-navigation>
       </v-container>
     </v-main>
@@ -33,3 +33,10 @@ const itemIcons = {
   Cursos: "mdi-school-outline",
 };
 </script>
+
+<style>
+.v-application__wrap {
+  min-height: unset;
+  min-height: unset;
+}
+</style>
