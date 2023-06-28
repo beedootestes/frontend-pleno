@@ -1,0 +1,28 @@
+[
+  {
+    "id": 54789,
+    "title": "Lorem Ipsum",
+    "articles": 10,
+    "posts": 25,
+    "beetcoins": 0,
+    "finishin": null
+  },
+  {
+    "id": 20947,
+    "title": "Dolor Sit Amet",
+    "articles": 7,
+    "posts": 13,
+    "beetcoins": 0,
+    "finishin": null
+  },
+  {
+    "id": 77296,
+    "title": "Consectetur Adipiscing",
+    "articles": 14,
+    "posts": 31,
+    "beetcoins": 0,
+    "finishin": null
+  }
+]
+
+
