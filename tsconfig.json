@@ -26,6 +26,9 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "vite.config.ts"
-  ]
+    "vite.config.ts",
+  ],
+  "files": ["src/constants/testes.json",
+  "src/constants/perguntas.json",
+  "src/constants/respostas.json"]
 }

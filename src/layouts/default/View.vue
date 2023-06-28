@@ -3,7 +3,10 @@
 		<router-view />
 	</v-main>
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-<script lang="ts" setup>
-//
+export default defineComponent({
+	name: 'MainView'
+})
 </script>
