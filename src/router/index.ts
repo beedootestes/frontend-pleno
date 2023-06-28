@@ -1,6 +1,8 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 
+import ExamView from '../views/ExamView.vue'
+
 const routes = [
 	{
 		path: '/',
@@ -14,6 +16,17 @@ const routes = [
 				// which is lazy-loaded when the route is visited.
 				component: () =>
 					import(/* webpackChunkName: "home" */ '@/views/Home.vue')
+			},
+			{
+				path: '/exam/:id',
+				name: 'exam',
+				component: ExamView,
+				props: true
+			},
+			{
+				path: '/:pathMatch(.*)*',
+				name: 'not-found',
+				component: () => import('../views/NotFoundView.vue')
 			}
 		]
 	}
