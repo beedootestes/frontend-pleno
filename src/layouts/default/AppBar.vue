@@ -1,92 +1,81 @@
 <template>
-	<v-app-bar class="border-b bar" density="prominent">
-		<v-sheet class="ma-1 pa-1 d-flex flex-wrap">
-			<v-app-bar-title>
-				<v-img cover :src="title" width="6rem"></v-img>
-			</v-app-bar-title>
-
-			<v-spacer></v-spacer>
-
-			<v-btn icon>
-				<v-icon>mdi-cart</v-icon>
-			</v-btn>
-
-			<v-btn icon>
-				<v-menu min-width="200px" rounded>
-					<template v-slot:activator="{ props }">
-						<v-btn icon v-bind="props">
-							<v-avatar>
-								<v-img
-									src="https://cdn.vuetifyjs.com/images/john.jpg"
-									alt="John"
-								></v-img>
-							</v-avatar>
-						</v-btn>
-					</template>
-					<v-card>
-						<v-card-text>
-							<div class="mx-auto text-center">
-								<v-avatar color="brown">
+	<Header class="shadow-lg py-2 flex flex-col items-center">
+		<div class="flex justify-between w-full px-4">
+			<img
+				:src="logo"
+				alt=""
+				class="w-36 h-fit cursor-pointer"
+				@click="$router.push('/')"
+			/>
+			<div class="flex justify-between gap-2">
+				<div
+					class="flex items-center bg-gray-300 rounded-full w-10 h-10 cursor-pointer"
+					@click="$router.push('/cart')"
+				>
+					<cart-icon size="24" class="m-auto" fill-color="#9ca3af" />
+				</div>
+				<v-btn icon>
+					<v-menu min-width="200px" rounded>
+						<template v-slot:activator="{ props }">
+							<v-btn icon v-bind="props">
+								<v-avatar>
 									<v-img
-										src="https://cdn.vuetifyjs.com/images/john.jpg"
-										alt="John"
+										src="https://avatars.githubusercontent.com/u/33555544?v=4"
+										alt="BioJJ"
 									></v-img>
 								</v-avatar>
-								<h3>{{ user.fullName }}</h3>
-								<p class="text-caption mt-1">
-									{{ user.email }}
-								</p>
-								<v-divider class="my-3"></v-divider>
-								<v-btn rounded variant="text"> Edit Account </v-btn>
-								<v-divider class="my-3"></v-divider>
-								<v-btn rounded variant="text"> Disconnect </v-btn>
-							</div>
-						</v-card-text>
-					</v-card>
-				</v-menu>
-			</v-btn>
-
-			<v-sheet class="flex-1-1-100 pb-2 rounded">
-				<form @submit.prevent="">
-					<v-text-field variant="outlined" placeholder="Pergunte para o Beebot">
-						<template v-slot:prepend-inner>
-							<v-icon color="orange" style="width: 100px; margin-right: 10px">
-								<v-img cover :src="bee"></v-img
-							></v-icon>
+							</v-btn>
 						</template>
-
-						<template v-slot:append-inner>
-							<v-icon
-								color="#FFFF"
-								style="
-									width: 40px;
-									height: 40px;
-									border-radius: 50%;
-									background-color: orange;
-								"
-							>
-								mdi-microphone</v-icon
-							>
-						</template>
-					</v-text-field>
-				</form>
-			</v-sheet>
-		</v-sheet>
-	</v-app-bar>
+						<v-card>
+							<v-card-text>
+								<div class="mx-auto text-center">
+									<v-avatar color="brown">
+										<v-img
+											src="https://avatars.githubusercontent.com/u/33555544?v=4"
+											alt="John"
+										></v-img>
+									</v-avatar>
+									<h3>{{ user.fullName }}</h3>
+									<p class="text-caption mt-1">
+										{{ user.email }}
+									</p>
+									<v-divider class="my-3"></v-divider>
+									<v-btn rounded variant="text"> Edit Account </v-btn>
+									<v-divider class="my-3"></v-divider>
+									<v-btn rounded variant="text"> Disconnect </v-btn>
+								</div>
+							</v-card-text>
+						</v-card>
+					</v-menu>
+				</v-btn>
+			</div>
+		</div>
+		<search-bar class="w-fit md:mx-auto mt-2 mx-4" />
+	</Header>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
-import title from './../../../imgs/logo2-beedoo.png'
-import bee from './../../../imgs/bee-input.png'
-const user = ref({
-	initials: 'JD',
-	fullName: 'John Doe',
-	email: 'john.doe@doe.com'
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import CartIcon from 'vue-material-design-icons/Cart.vue'
+import SearchBar from '@/components/SearchBar.vue'
+import logo from '@/assets/logo.png'
+
+export default defineComponent({
+	components: {
+		CartIcon,
+		SearchBar
+	},
+	setup() {
+		const user = ref({
+			initials: 'BioJJ',
+			fullName: 'Jefferson Coelho',
+			email: 'bio.jeffcoelho@gmail.com'
+		})
+
+		return {
+			logo,
+			user
+		}
+	}
 })
 </script>
-
-<style scoped>
-.bar {
-}
-</style>
