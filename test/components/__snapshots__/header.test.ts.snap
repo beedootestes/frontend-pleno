@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test Header.vue > mount component 1`] = `
+"<section data-v-c970699f=\\"\\" class=\\"header\\">
+  <div data-v-3471366b=\\"\\" data-v-c970699f=\\"\\" class=\\"bar-header header-bar\\"><img data-v-3471366b=\\"\\" class=\\"beedoo-logo\\" src=\\"/src/assets/beedoo-logo.png\\" alt=\\"Beedoo logo\\">
+    <div data-v-3471366b=\\"\\" class=\\"cart-profile\\">
+      <div data-v-3471366b=\\"\\" class=\\"cart-container\\"><span data-v-3471366b=\\"\\" aria-hidden=\\"true\\" class=\\"material-design-icon cart-icon\\" role=\\"img\\"><svg fill=\\"currentColor\\" class=\\"material-design-icon__svg\\" width=\\"35\\" height=\\"35\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z\\"><!--v-if--></path></svg></span></div>
+      <figure data-v-3471366b=\\"\\" class=\\"profile-image\\"><img data-v-3471366b=\\"\\" src=\\"/profile.jpg\\" alt=\\"Imagem perfil\\"></figure>
+    </div>
+  </div>
+  <div data-v-6ab8b910=\\"\\" data-v-c970699f=\\"\\" class=\\"search-bar\\"><img data-v-6ab8b910=\\"\\" src=\\"/src/assets/beebot.png\\" alt=\\"Beebot logo\\"><input data-v-6ab8b910=\\"\\" type=\\"text\\" placeholder=\\"Pergunte para o Beebot\\">
+    <div data-v-6ab8b910=\\"\\" class=\\"mic-container\\"><span data-v-6ab8b910=\\"\\" aria-hidden=\\"true\\" class=\\"material-design-icon microphone-icon\\" role=\\"img\\"><svg fill=\\"currentColor\\" class=\\"material-design-icon__svg\\" width=\\"32\\" height=\\"32\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z\\"><!--v-if--></path></svg></span></div>
+  </div>
+</section>"
+`;
