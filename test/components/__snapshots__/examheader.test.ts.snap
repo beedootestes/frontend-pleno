@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test ExamHeader,vue > mount component 1`] = `
+"<section data-v-667f190b=\\"\\" class=\\"questions-header\\">
+  <div data-v-667f190b=\\"\\" class=\\"title-container\\">
+    <arrow-left-icon-stub data-v-667f190b=\\"\\" fillcolor=\\"currentColor\\" size=\\"50\\" class=\\"icon-back\\"></arrow-left-icon-stub>
+    <p data-v-667f190b=\\"\\">Exam Question</p>
+  </div>
+  <div data-v-667f190b=\\"\\" class=\\"beetcoins\\"><span data-v-667f190b=\\"\\">$</span> 50 / 30</div>
+  <div data-v-667f190b=\\"\\" class=\\"more\\"><span data-v-667f190b=\\"\\">BeeFree - Orgulho LGBTQIA+</span><span data-v-667f190b=\\"\\">Conheça mais do beedoo</span></div>
+</section>"
+`;

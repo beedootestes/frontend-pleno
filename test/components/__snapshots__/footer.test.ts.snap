@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test Footer.vue > mount component 1`] = `
+"<section data-v-4896eafd=\\"\\" class=\\"footer\\">
+  <div data-v-e871e9d7=\\"\\" data-v-4896eafd=\\"\\" class=\\"link feed\\">
+    <router-link data-v-e871e9d7=\\"\\" to=\\"feed\\"><span data-v-4896eafd=\\"\\" class=\\"icon-menu-bar material-design-icon rss-icon icon-menu-bar\\" aria-hidden=\\"true\\" role=\\"img\\"><svg fill=\\"currentColor\\" class=\\"material-design-icon__svg\\" width=\\"50\\" height=\\"50\\" viewBox=\\"0 0 24 24\\"><path d=\\"M6.18,15.64A2.18,2.18 0 0,1 8.36,17.82C8.36,19 7.38,20 6.18,20C5,20 4,19 4,17.82A2.18,2.18 0 0,1 6.18,15.64M4,4.44A15.56,15.56 0 0,1 19.56,20H16.73A12.73,12.73 0 0,0 4,7.27V4.44M4,10.1A9.9,9.9 0 0,1 13.9,20H11.07A7.07,7.07 0 0,0 4,12.93V10.1Z\\"><!--v-if--></path></svg></span> Feed</router-link>
+  </div>
+  <div data-v-e871e9d7=\\"\\" data-v-4896eafd=\\"\\" class=\\"link wiki\\">
+    <router-link data-v-e871e9d7=\\"\\" to=\\"wiki\\"><span data-v-4896eafd=\\"\\" class=\\"icon-menu-bar material-design-icon lightbulb-outline-icon icon-menu-bar\\" aria-hidden=\\"true\\" role=\\"img\\"><svg fill=\\"currentColor\\" class=\\"material-design-icon__svg\\" width=\\"50\\" height=\\"50\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12,2A7,7 0 0,1 19,9C19,11.38 17.81,13.47 16,14.74V17A1,1 0 0,1 15,18H9A1,1 0 0,1 8,17V14.74C6.19,13.47 5,11.38 5,9A7,7 0 0,1 12,2M9,21V20H15V21A1,1 0 0,1 14,22H10A1,1 0 0,1 9,21M12,4A5,5 0 0,0 7,9C7,11.05 8.23,12.81 10,13.58V16H14V13.58C15.77,12.81 17,11.05 17,9A5,5 0 0,0 12,4Z\\"><!--v-if--></path></svg></span> Wiki</router-link>
+  </div>
+  <div data-v-4896eafd=\\"\\" class=\\"main-link\\">
+    <router-link data-v-4896eafd=\\"\\" to=\\"/\\"><img data-v-4896eafd=\\"\\" src=\\"/src/assets/icon-beebot.png\\"></router-link>
+  </div>
+  <div data-v-e871e9d7=\\"\\" data-v-4896eafd=\\"\\" class=\\"link exam\\">
+    <router-link data-v-e871e9d7=\\"\\" to=\\"exam\\"><span data-v-4896eafd=\\"\\" class=\\"icon-menu-bar material-design-icon lightning-bolt-outline-icon icon-menu-bar\\" aria-hidden=\\"true\\" role=\\"img\\"><svg fill=\\"currentColor\\" class=\\"material-design-icon__svg\\" width=\\"50\\" height=\\"50\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11 9.47V11H14.76L13 14.53V13H9.24L11 9.47M13 1L6 15H11V23L18 9H13V1Z\\"><!--v-if--></path></svg></span> Teste relã...</router-link>
+  </div>
+  <div data-v-e871e9d7=\\"\\" data-v-4896eafd=\\"\\" class=\\"link courses\\">
+    <router-link data-v-e871e9d7=\\"\\" to=\\"courses\\"><span data-v-4896eafd=\\"\\" class=\\"icon-menu-bar material-design-icon checkbox-marked-outline-icon icon-menu-bar\\" aria-hidden=\\"true\\" role=\\"img\\"><svg fill=\\"currentColor\\" class=\\"material-design-icon__svg\\" width=\\"50\\" height=\\"50\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19,19H5V5H15V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V11H19M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z\\"><!--v-if--></path></svg></span> Cursos</router-link>
+  </div>
+</section>"
+`;

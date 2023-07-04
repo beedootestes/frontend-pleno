@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test Link.vue > mount component 1`] = `
+"<div data-v-e871e9d7=\\"\\" class=\\"link\\">
+  <router-link data-v-e871e9d7=\\"\\" to=\\"exams\\"> exams</router-link>
+</div>"
+`;

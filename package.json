@@ -1,0 +1,33 @@
+{
+  "name": "beedoo-test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "serverdata": "node server.js",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "pinia": "^2.1.4",
+    "vue": "^3.2.47",
+    "vue-material-design-icons": "^5.2.0",
+    "vue-router": "^4.2.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vitest/coverage-v8": "^0.32.4",
+    "@vitest/ui": "^0.32.4",
+    "@vue/test-utils": "^2.4.0",
+    "jsdom": "^22.1.0",
+    "sass": "^1.63.6",
+    "server": "^1.0.38",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9",
+    "vitest": "^0.32.4",
+    "vue-tsc": "^1.4.2"
+  }
+}

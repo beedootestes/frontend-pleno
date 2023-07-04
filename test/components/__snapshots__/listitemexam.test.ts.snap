@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test ListItemExam.vue > mount component 1`] = `"<div data-v-f78d2ac5=\\"\\" class=\\"exam-item\\">First Exam <span data-v-f78d2ac5=\\"\\" aria-hidden=\\"true\\" class=\\"material-design-icon chevron-right-icon\\" role=\\"img\\"><svg fill=\\"currentColor\\" class=\\"material-design-icon__svg\\" width=\\"45\\" height=\\"45\\" viewBox=\\"0 0 24 24\\"><path d=\\"M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z\\"><!--v-if--></path></svg></span></div>"`;

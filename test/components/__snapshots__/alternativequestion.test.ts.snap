@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test AlternativeQuestion.vue > mount component 1`] = `
+"<div data-v-58d5336b=\\"\\" class=\\"answer question-item\\">
+  <div data-v-58d5336b=\\"\\">Alternative question.</div>
+  <div data-v-58d5336b=\\"\\">
+    <!--v-if-->
+  </div>
+</div>"
+`;
