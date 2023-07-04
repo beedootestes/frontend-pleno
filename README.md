@@ -1,4 +1,4 @@
-# Test for Beedo Tech
+# Test for Beedoo EdTech
 
 Project made with [Vite 4.2](https://vitejs.dev) and [Vue.js 3.2](https://vuejs.org).  
 Other libs used:
